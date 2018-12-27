@@ -15,13 +15,26 @@ Enter algorithms you want to study into Algorithms Study Helper, and the app wil
 ## How?
 This part explains the algorithm I use to schedule when to study problems.  
 
-**Disclaimer**: It is currently tweaked for my own retention/learning rate. Read on to customize it to your liking!
+**Disclaimer**: It is currently tweaked to my own retention/learning rate. Read on to customize it to your liking!
 
 **Scheduling Algorithm**  
-**RETENTION_RATE** = 1.5 (default)
+**_nextScheduled_** = (time when you studied it) + 24 hours * (**_mastery_** * RETENTION_RATE + 1)  
 
-**_nextScheduled_** =   
-(current time when you studied it) + 24 hours * (**_mastery_** * RETENTION_RATE + 1)
+**RETENTION_RATE** = 1.5 (default)  
+This is a constant in prompt.js. Increase it if you're someone who retains information longer (and vice-versa).
+
+**Table: Scheduling Intervals with RETENTION_RATE = 1.5**
+
+| Mastery       | Interval (days)|
+| :-----------: |:--------------:| 
+| 0             | 1              |
+| 1             | 2.5            | 
+| 2             | 4              |  
+| 3             | 5.5            |  
+| 4             | 7              |  
+| 5             | 8.5            |   
+
+
 
 Each problem you enter into the app is an entry. It is stored in entries.json. An entry looks like this:
 
