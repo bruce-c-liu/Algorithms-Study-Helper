@@ -6,8 +6,8 @@ I wrote this app to help me study for Leetcode-style interview questions. While 
 
 However, while I was trying to study these questions, I noticed I was often either (1) wasting time redoing problems I've already mastered or (2) wasting time having to remaster an old problem that I'd forgotten the key insight to. This app solves that problem by acting as an automatic scheduler. 
 
-"Why did you make this app when more mature solutions like [Anki](https://apps.ankiweb.net/) exist?"  
-I did use Anki at first, but I had a difficult time coming up with settings that were suitable for studying interview type questions. 
+**"Why did you make this app when more mature solutions like [Anki](https://apps.ankiweb.net/) exist?"**  
+I did use Anki at first, but I had a difficult time coming up with settings that were suitable for studying interview type questions.
 
 ## What?
 Enter algorithms you want to study into Algorithms Study Helper, and the app will automatically schedule when you should study an algorithm next! As you successfully review an algorithm, it will be scheduled less and less frequently.
