@@ -19,5 +19,5 @@ nodeCleanup(function (exitCode, signal) {
   }
 });
 
-console.log('Hello! Welcome to Bruce\'s Algorithms Study Helper.\nEnter a number to begin...');
+console.log('Hello! Welcome to Algorithms Study Helper.\nEnter a number to begin...');
 prompt();

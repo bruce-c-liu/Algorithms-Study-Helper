@@ -28,7 +28,6 @@ function findEntriesDue () {
 }
 
 function prompt () {
-  console.log(process.memoryUsage().heapUsed / 1024 / 1024);
   const PROMPT =
 `==================================================================================
 [1] Review (${findEntriesDue()} of ${entries.length} Due) | [2] Add Entry | [3] Show Schedule | [4] Exit
@@ -164,6 +163,7 @@ function printSchedule () {
 
 // Advance mastery when submastery >= 4
 // failed to complete: Drop back to mastery 0
+// Buggy solution: Add 0 to sub-mastery.
 // Hard: Add 1 to sub-mastery.
 // Medium: Add 2 to sub-mastery.
 // Easy: Add 3 to sub-mastery.
