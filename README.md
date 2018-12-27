@@ -39,20 +39,21 @@ After you review a scheduled problem, you will be asked "How difficult was it?" 
 1. Easy: **_subMastery_** + 3
 2. Medium: **_subMastery_** + 2
 3. Hard: **_subMastery_** + 1
-4. Buggy Solution*: **_subMastery_** + 0
+4. Buggy Solution: **_subMastery_** + 0
 5. Failed to Complete: **_mastery_** and **_subMastery_** both reset to 0.
 
-(*Personally, I choose this option even if there's a single bug in my solution, because I consider even array index off-by-one errors a lack of mastery.)
-
-Once you reach **_subMastery_** 4 on an entry, you will gain 1 **_mastery_** (up to 5). **_subMastery_** is reset to 0 and excess points gained from your answer is carried over.
+Once you reach **_subMastery_** 4 on an entry, you will gain 1 **_mastery_** (up to 5). **_subMastery_** is reset, but excess **_subMastery_** points are carried over.
 
 **EXAMPLE**: Given a completely new entry with **_subMastery_**: 0 and **_mastery_**: 0. Say your 3 study sessions look like the following:
 1. You answer Medium. (**_subMastery_**: 2 and **_mastery_**: 0)  
    It will be scheduled again in 1 day.
 2. You answer Hard. (**_subMastery_**: 3 and **_mastery_**: 0)  
    It will be scheduled again in 1 day.
-3. You answer Easy. (**_subMastery_**: 2 and **_mastery_**: 1)  
-   It will be scheduled again in 2.5 days.
+3. You answer Easy. (**_subMastery_**: 2* and **_mastery_**: 1)  
+   It will be scheduled again in 2.5 days.  
+
+   *subMastery = 2 since Easy adds 3.  
+    3+3 = 6. We have 2 excess, so it's carried over.
 
 
 ## Installation
