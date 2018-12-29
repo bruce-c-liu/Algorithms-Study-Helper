@@ -10,6 +10,7 @@ nodeCleanup(function (exitCode, signal) {
   if (signal) {
     // RECEIVES SIGHUP IF TERMINAL IS CLOSED
     console.log('Got signal: ', signal);
+    console.log('Exiting...');
     nodeCleanup.uninstall(); // don't call cleanup handler again
     process.kill(process.pid, signal);
     return false;
