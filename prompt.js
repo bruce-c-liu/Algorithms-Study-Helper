@@ -79,7 +79,7 @@ function addEntry (entry) {
 const ONE_DAY_IN_MILLISECONDS = 86400000; // 1000*60*60*24
 
 // Higher retention rate = longer interval between studying algorithms
-const RETENTION_RATE = 1.5;
+const RETENTION_RATE = 2;
 
 const QUESTION =
 `How difficult was it?
@@ -100,7 +100,7 @@ function review () {
         let subMasteryPoints = 0;
 
         switch (answer) {
-          case '1': subMasteryPoints = 3; break;
+          case '1': subMasteryPoints = 4; break;
           case '2': subMasteryPoints = 2; break;
           case '3': subMasteryPoints = 1; break;
           case '4': subMasteryPoints = 0; break;
@@ -116,13 +116,14 @@ function review () {
 
         entry.subMastery += subMasteryPoints;
         if (entry.subMastery >= 4) {
-          entry.subMastery -= 4;
+          entry.subMastery = 0;
           if (entry.mastery < 5) {
             entry.mastery += 1;
           }
         }
         entry.lastStudied = Date.now();
-        entry.nextScheduled = Date.now() + ONE_DAY_IN_MILLISECONDS * (entry.mastery * RETENTION_RATE + 1);
+        entry.nextScheduled = Date.now() + ONE_DAY_IN_MILLISECONDS * Math.pow(RETENTION_RATE, entry.mastery);
+        // entry.nextScheduled = Date.now() + ONE_DAY_IN_MILLISECONDS * (entry.mastery * RETENTION_RATE + 1);
 
         entries.pop();
         entriesDue--;
@@ -166,14 +167,14 @@ function printSchedule () {
 // Buggy solution: Add 0 to sub-mastery.
 // Hard: Add 1 to sub-mastery.
 // Medium: Add 2 to sub-mastery.
-// Easy: Add 3 to sub-mastery.
+// Easy: Add 4 to sub-mastery.
 
 // mastery 0: every 1 day
-// mastery 1: every 2.5 days
+// mastery 1: every 2 days
 // mastery 2: every 4 days
-// mastery 3: every 5.5 days
-// mastery 4: every 7 days
-// mastery 5: every 8.5 days
+// mastery 3: every 8 days
+// mastery 4: every 16 days
+// mastery 5: every 32 days
 
 module.exports = {
   prompt: prompt,

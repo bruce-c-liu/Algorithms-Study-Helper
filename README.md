@@ -18,21 +18,21 @@ This part explains the algorithm I use to schedule when to study problems.
 **Disclaimer**: It is currently tweaked to my own retention/learning rate. Read on to customize it to your liking!
 
 **Scheduling Algorithm**  
-**_nextScheduled_** = (time when you studied it) + 24 hours * (**_mastery_** * RETENTION_RATE + 1)  
+**_nextScheduled_** = (time when you studied it) + 24 hours * (**RETENTION_RATE** ^ **_mastery_**)  
 
-**RETENTION_RATE** = 1.5 (default)  
+**RETENTION_RATE** = 2 (default)  
 This is a constant in prompt.js. Increase it if you're someone who retains information longer (and vice-versa).
 
-**Table: Scheduling Intervals with RETENTION_RATE = 1.5**
+**Table: Scheduling Intervals with RETENTION_RATE = 2**
 
 | Mastery       | Interval (days)|
 | :-----------: |:--------------:| 
 | 0             | 1              |
-| 1             | 2.5            | 
+| 1             | 2              | 
 | 2             | 4              |  
-| 3             | 5.5            |  
-| 4             | 7              |  
-| 5             | 8.5            |   
+| 3             | 8              |  
+| 4             | 16             |  
+| 5             | 32             |   
 
 
 
@@ -49,24 +49,23 @@ const entry = {
 ```
 After you review a scheduled problem, you will be asked "How difficult was it?" Your answer affects the entry's **_subMastery_** and/or **_mastery_**.
 
-1. Easy: **_subMastery_** + 3
+1. Easy: **_subMastery_** + 4
 2. Medium: **_subMastery_** + 2
 3. Hard: **_subMastery_** + 1
 4. Buggy Solution: **_subMastery_** + 0
 5. Failed to Complete: **_mastery_** and **_subMastery_** both reset to 0.
 
-Once you reach **_subMastery_** 4 on an entry, you will gain 1 **_mastery_** (up to 5). **_subMastery_** is reset, but excess **_subMastery_** points are carried over.
+Once you reach **_subMastery_** 4 on an entry, you will gain 1 **_mastery_** (up to 5). **_subMastery_** is reset to 0.
 
-**EXAMPLE**: Given a completely new entry with **_subMastery_**: 0 and **_mastery_**: 0. Say your 3 study sessions look like the following:
+**EXAMPLE**: Given a completely new entry with **_subMastery_**: 0 and **_mastery_**: 0. Say your 4 study sessions look like the following:
 1. You answer Medium. (**_subMastery_**: 2 and **_mastery_**: 0)  
    It will be scheduled again in 1 day.
 2. You answer Hard. (**_subMastery_**: 3 and **_mastery_**: 0)  
    It will be scheduled again in 1 day.
-3. You answer Easy. (**_subMastery_**: 2* and **_mastery_**: 1)  
-   It will be scheduled again in 2.5 days.  
-
-   *subMastery = 2 since Easy adds 3.  
-    3+3 = 6. We have 2 excess, so it's carried over.
+3. You answer Easy. (**_subMastery_**: 0 and **_mastery_**: 1)  
+   It will be scheduled again in 2 days. 
+4. You answer Easy. (**_subMastery_**: 0 and **_mastery_**: 2)  
+   It will be scheduled again in 4 days.
 
 
 ## Installation
