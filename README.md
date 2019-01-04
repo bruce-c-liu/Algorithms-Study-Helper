@@ -21,7 +21,9 @@ This part explains the algorithm I use to schedule when to study problems.
 **_nextScheduled_** = (time when you studied it) + 24 hours * (**RETENTION_RATE** ^ **_mastery_**)  
 
 **RETENTION_RATE** = 2 (default)  
-This is a constant in prompt.js. Increase it if you're someone who retains information longer (and vice-versa).
+This is a constant in prompt.js.  
+-Increase it if you retain new information well.  
+-Decrease it if you require more practice to retain information.
 
 **Table: Scheduling Intervals with RETENTION_RATE = 2**
 
